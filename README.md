@@ -1,6 +1,8 @@
 # upx_fuzzing_corpus
 Fuzzing corpus for UPX
 
+[TOC]
+
 ## crash-0f8631c432561309dc3520bb3c5ddcbe286a6bad
 ```
 ==664968==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60c000065400 at pc 0x0000009feb61 bp 0x7ffdf047fad0 sp 0x7ffdf047fac8
