@@ -2,6 +2,9 @@
 Fuzzing corpus for UPX
 
 ## crash-0f8631c432561309dc3520bb3c5ddcbe286a6bad
+
+Filed as https://github.com/upx/upx/issues/414.
+
 ```
 ==664968==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60c000065400 at pc 0x0000009feb61 bp 0x7ffdf047fad0 sp 0x7ffdf047fac8
 READ of size 1 at 0x60c000065400 thread T0
@@ -28,6 +31,8 @@ READ of size 1 at 0x60c000065400 thread T0
 ```
 
 ## crash-cef58bdb873e0ddc2280ad82393b7fa968168f63
+
+Filed as https://github.com/upx/upx/issues/417.
 
 Without libfuzzer:
 
@@ -82,6 +87,10 @@ SUMMARY: AddressSanitizer: SEGV /git/upx/src/miniacc.h:6255 in acc_ua_get_le64(v
 
 
 ## testcase-6608718114455552
+
+Filed as https://github.com/upx/upx/issues/425.
+
+
 ```
  ./src/upx.out -d  /tmp/testcase-6608718114455552
                        Ultimate Packer for eXecutables
