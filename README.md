@@ -127,6 +127,8 @@ SUMMARY: AddressSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x15fb91)
 
 ## testcase-5369669307465728
 
+Filed as https://github.com/upx/upx/issues/426.
+
 ```
 upx.out -d /tmp/testcase-5369669307465728 
                        Ultimate Packer for eXecutables
