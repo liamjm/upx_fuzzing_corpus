@@ -80,3 +80,38 @@ SUMMARY: AddressSanitizer: SEGV /git/upx/src/miniacc.h:6255 in acc_ua_get_le64(v
 ==3332600==ABORTING
 ```
 
+
+## testcase-6608718114455552
+```
+ ./src/upx.out -d  /tmp/testcase-6608718114455552
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2020
+UPX git-f85b79  Markus Oberhumer, Laszlo Molnar & John Reiser   Jan 24th 2020
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2707265==ERROR: AddressSanitizer: SEGV on unknown address 0x61afffff8080 (pc 0x7fef09b41b91 bp 0x7ffea984a5a0 sp 0x7ffea9849d48 T0)
+==2707265==The signal is caused by a READ memory access.
+    #0 0x7fef09b41b91  (/lib/x86_64-linux-gnu/libc.so.6+0x15fb91)
+    #1 0x7fef0a751a8c  (/lib/x86_64-linux-gnu/libasan.so.6+0x3ca8c)
+    #2 0x55742cea82cf in upx_strlen /usr/local/google/home/liamjm/git/upx/src/snprintf.cpp:844
+    #3 0x55742ce0906e in PeFile::Export::convert(unsigned int, unsigned int) /usr/local/google/home/liamjm/git/upx/src/pefile.cpp:1120
+    #4 0x55742ce0ce89 in PeFile::processExports(PeFile::Export*) /usr/local/google/home/liamjm/git/upx/src/pefile.cpp:1219
+    #5 0x55742ce28cb0 in PeFile::rebuildExports() /usr/local/google/home/liamjm/git/upx/src/pefile.cpp:2722
+    #6 0x55742ce59542 in void PeFile::unpack0<PeFile32::pe_header_t, LE32, unsigned int>(OutputFile*, PeFile32::pe_header_t const&, PeFile32::pe_header_t&, unsigned int, bool) /usr/local/google/home/liamjm/git/upx/src/pefile.cpp:2949
+    #7 0x55742ce3398c in PeFile32::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/pefile.cpp:3120
+    #8 0x55742cd9cdc9 in Packer::doUnpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packer.cpp:107
+    #9 0x55742cdef60d in PackMaster::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packmast.cpp:269
+    #10 0x55742cec8d73 in do_one_file(char const*, char*) /usr/local/google/home/liamjm/git/upx/src/work.cpp:160
+    #11 0x55742ceca699 in do_files(int, int, char**) /usr/local/google/home/liamjm/git/upx/src/work.cpp:271
+    #12 0x55742c956328 in real_main(int, char**) /usr/local/google/home/liamjm/git/upx/src/main.cpp:1541
+    #13 0x55742c95dbae in main /usr/local/google/home/liamjm/git/upx/src/main_entrypoint.cpp:45
+    #14 0x7fef09a08cc9 in __libc_start_main ../csu/libc-start.c:308
+    #15 0x55742c8e0849 in _start (/usr/local/google/home/liamjm/git/upx/src/upx.out+0xa15849)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x15fb91)
+==2707265==ABORTING
+```
