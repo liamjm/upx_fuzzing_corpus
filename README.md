@@ -124,3 +124,76 @@ AddressSanitizer can not provide additional info.
 SUMMARY: AddressSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x15fb91)
 ==2707265==ABORTING
 ```
+
+## testcase-5369669307465728
+
+```
+upx.out -d /tmp/testcase-5369669307465728 
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2020
+UPX git-f85b79  Markus Oberhumer, Laszlo Molnar & John Reiser   Jan 24th 2020
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+=================================================================
+==2711255==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x61d000000830 at pc 0x7fdf8278a983 bp 0x7fff35283570 sp 0x7fff35282d20
+READ of size 72 at 0x61d000000830 thread T0
+    #0 0x7fdf8278a982 in __interceptor_memcpy (/lib/x86_64-linux-gnu/libasan.so.6+0x39982)
+    #1 0x55e6709a6b0c in PackMachBase<N_Mach::MachClass_64<N_BELE_CTP::LEPolicy> >::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/p_mach.cpp:1433
+    #2 0x55e670b55dc9 in Packer::doUnpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packer.cpp:107
+    #3 0x55e670ba860d in PackMaster::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packmast.cpp:269
+    #4 0x55e670c81d73 in do_one_file(char const*, char*) /usr/local/google/home/liamjm/git/upx/src/work.cpp:160
+    #5 0x55e670c83699 in do_files(int, int, char**) /usr/local/google/home/liamjm/git/upx/src/work.cpp:271
+    #6 0x55e67070f328 in real_main(int, char**) /usr/local/google/home/liamjm/git/upx/src/main.cpp:1541
+    #7 0x55e670716bae in main /usr/local/google/home/liamjm/git/upx/src/main_entrypoint.cpp:45
+    #8 0x7fdf81a44cc9 in __libc_start_main ../csu/libc-start.c:308
+    #9 0x55e670699849 in _start (/usr/local/google/home/liamjm/git/upx/src/upx.out+0xa15849)
+
+0x61d000000830 is located 0 bytes to the right of 1968-byte region [0x61d000000080,0x61d000000830)
+allocated by thread T0 here:
+    #0 0x7fdf827fc7a7 in operator new[](unsigned long) (/lib/x86_64-linux-gnu/libasan.so.6+0xab7a7)
+    #1 0x55e6709a5f0b in PackMachBase<N_Mach::MachClass_64<N_BELE_CTP::LEPolicy> >::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/p_mach.cpp:1421
+    #2 0x55e670b55dc9 in Packer::doUnpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packer.cpp:107
+    #3 0x55e670ba860d in PackMaster::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packmast.cpp:269
+    #4 0x55e670c81d73 in do_one_file(char const*, char*) /usr/local/google/home/liamjm/git/upx/src/work.cpp:160
+    #5 0x55e670c83699 in do_files(int, int, char**) /usr/local/google/home/liamjm/git/upx/src/work.cpp:271
+    #6 0x55e67070f328 in real_main(int, char**) /usr/local/google/home/liamjm/git/upx/src/main.cpp:1541
+    #7 0x55e670716bae in main /usr/local/google/home/liamjm/git/upx/src/main_entrypoint.cpp:45
+    #8 0x7fdf81a44cc9 in __libc_start_main ../csu/libc-start.c:308
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow (/lib/x86_64-linux-gnu/libasan.so.6+0x39982) in __interceptor_memcpy
+Shadow bytes around the buggy address:
+  0x0c3a7fff80b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c3a7fff80c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c3a7fff80d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c3a7fff80e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c3a7fff80f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c3a7fff8100: 00 00 00 00 00 00[fa]fa fa fa fa fa fa fa fa fa
+  0x0c3a7fff8110: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c3a7fff8120: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c3a7fff8130: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c3a7fff8140: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c3a7fff8150: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==2711255==ABORTING
+
+```
