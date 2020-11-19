@@ -105,20 +105,20 @@ AddressSanitizer:DEADLYSIGNAL
 ==2707265==The signal is caused by a READ memory access.
     #0 0x7fef09b41b91  (/lib/x86_64-linux-gnu/libc.so.6+0x15fb91)
     #1 0x7fef0a751a8c  (/lib/x86_64-linux-gnu/libasan.so.6+0x3ca8c)
-    #2 0x55742cea82cf in upx_strlen /usr/local/google/home/liamjm/git/upx/src/snprintf.cpp:844
-    #3 0x55742ce0906e in PeFile::Export::convert(unsigned int, unsigned int) /usr/local/google/home/liamjm/git/upx/src/pefile.cpp:1120
-    #4 0x55742ce0ce89 in PeFile::processExports(PeFile::Export*) /usr/local/google/home/liamjm/git/upx/src/pefile.cpp:1219
-    #5 0x55742ce28cb0 in PeFile::rebuildExports() /usr/local/google/home/liamjm/git/upx/src/pefile.cpp:2722
-    #6 0x55742ce59542 in void PeFile::unpack0<PeFile32::pe_header_t, LE32, unsigned int>(OutputFile*, PeFile32::pe_header_t const&, PeFile32::pe_header_t&, unsigned int, bool) /usr/local/google/home/liamjm/git/upx/src/pefile.cpp:2949
-    #7 0x55742ce3398c in PeFile32::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/pefile.cpp:3120
-    #8 0x55742cd9cdc9 in Packer::doUnpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packer.cpp:107
-    #9 0x55742cdef60d in PackMaster::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packmast.cpp:269
-    #10 0x55742cec8d73 in do_one_file(char const*, char*) /usr/local/google/home/liamjm/git/upx/src/work.cpp:160
-    #11 0x55742ceca699 in do_files(int, int, char**) /usr/local/google/home/liamjm/git/upx/src/work.cpp:271
-    #12 0x55742c956328 in real_main(int, char**) /usr/local/google/home/liamjm/git/upx/src/main.cpp:1541
-    #13 0x55742c95dbae in main /usr/local/google/home/liamjm/git/upx/src/main_entrypoint.cpp:45
+    #2 0x55742cea82cf in upx_strlen /git/upx/src/snprintf.cpp:844
+    #3 0x55742ce0906e in PeFile::Export::convert(unsigned int, unsigned int) /git/upx/src/pefile.cpp:1120
+    #4 0x55742ce0ce89 in PeFile::processExports(PeFile::Export*) /git/upx/src/pefile.cpp:1219
+    #5 0x55742ce28cb0 in PeFile::rebuildExports() /git/upx/src/pefile.cpp:2722
+    #6 0x55742ce59542 in void PeFile::unpack0<PeFile32::pe_header_t, LE32, unsigned int>(OutputFile*, PeFile32::pe_header_t const&, PeFile32::pe_header_t&, unsigned int, bool) /git/upx/src/pefile.cpp:2949
+    #7 0x55742ce3398c in PeFile32::unpack(OutputFile*) /git/upx/src/pefile.cpp:3120
+    #8 0x55742cd9cdc9 in Packer::doUnpack(OutputFile*) /git/upx/src/packer.cpp:107
+    #9 0x55742cdef60d in PackMaster::unpack(OutputFile*) /git/upx/src/packmast.cpp:269
+    #10 0x55742cec8d73 in do_one_file(char const*, char*) /git/upx/src/work.cpp:160
+    #11 0x55742ceca699 in do_files(int, int, char**) /git/upx/src/work.cpp:271
+    #12 0x55742c956328 in real_main(int, char**) /git/upx/src/main.cpp:1541
+    #13 0x55742c95dbae in main /git/upx/src/main_entrypoint.cpp:45
     #14 0x7fef09a08cc9 in __libc_start_main ../csu/libc-start.c:308
-    #15 0x55742c8e0849 in _start (/usr/local/google/home/liamjm/git/upx/src/upx.out+0xa15849)
+    #15 0x55742c8e0849 in _start (/git/upx/src/upx.out+0xa15849)
 
 AddressSanitizer can not provide additional info.
 SUMMARY: AddressSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x15fb91)
@@ -141,26 +141,26 @@ UPX git-f85b79  Markus Oberhumer, Laszlo Molnar & John Reiser   Jan 24th 2020
 ==2711255==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x61d000000830 at pc 0x7fdf8278a983 bp 0x7fff35283570 sp 0x7fff35282d20
 READ of size 72 at 0x61d000000830 thread T0
     #0 0x7fdf8278a982 in __interceptor_memcpy (/lib/x86_64-linux-gnu/libasan.so.6+0x39982)
-    #1 0x55e6709a6b0c in PackMachBase<N_Mach::MachClass_64<N_BELE_CTP::LEPolicy> >::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/p_mach.cpp:1433
-    #2 0x55e670b55dc9 in Packer::doUnpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packer.cpp:107
-    #3 0x55e670ba860d in PackMaster::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packmast.cpp:269
-    #4 0x55e670c81d73 in do_one_file(char const*, char*) /usr/local/google/home/liamjm/git/upx/src/work.cpp:160
-    #5 0x55e670c83699 in do_files(int, int, char**) /usr/local/google/home/liamjm/git/upx/src/work.cpp:271
-    #6 0x55e67070f328 in real_main(int, char**) /usr/local/google/home/liamjm/git/upx/src/main.cpp:1541
-    #7 0x55e670716bae in main /usr/local/google/home/liamjm/git/upx/src/main_entrypoint.cpp:45
+    #1 0x55e6709a6b0c in PackMachBase<N_Mach::MachClass_64<N_BELE_CTP::LEPolicy> >::unpack(OutputFile*) /git/upx/src/p_mach.cpp:1433
+    #2 0x55e670b55dc9 in Packer::doUnpack(OutputFile*) /git/upx/src/packer.cpp:107
+    #3 0x55e670ba860d in PackMaster::unpack(OutputFile*) /git/upx/src/packmast.cpp:269
+    #4 0x55e670c81d73 in do_one_file(char const*, char*) /git/upx/src/work.cpp:160
+    #5 0x55e670c83699 in do_files(int, int, char**) /git/upx/src/work.cpp:271
+    #6 0x55e67070f328 in real_main(int, char**) /git/upx/src/main.cpp:1541
+    #7 0x55e670716bae in main /git/upx/src/main_entrypoint.cpp:45
     #8 0x7fdf81a44cc9 in __libc_start_main ../csu/libc-start.c:308
-    #9 0x55e670699849 in _start (/usr/local/google/home/liamjm/git/upx/src/upx.out+0xa15849)
+    #9 0x55e670699849 in _start (/git/upx/src/upx.out+0xa15849)
 
 0x61d000000830 is located 0 bytes to the right of 1968-byte region [0x61d000000080,0x61d000000830)
 allocated by thread T0 here:
     #0 0x7fdf827fc7a7 in operator new[](unsigned long) (/lib/x86_64-linux-gnu/libasan.so.6+0xab7a7)
-    #1 0x55e6709a5f0b in PackMachBase<N_Mach::MachClass_64<N_BELE_CTP::LEPolicy> >::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/p_mach.cpp:1421
-    #2 0x55e670b55dc9 in Packer::doUnpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packer.cpp:107
-    #3 0x55e670ba860d in PackMaster::unpack(OutputFile*) /usr/local/google/home/liamjm/git/upx/src/packmast.cpp:269
-    #4 0x55e670c81d73 in do_one_file(char const*, char*) /usr/local/google/home/liamjm/git/upx/src/work.cpp:160
-    #5 0x55e670c83699 in do_files(int, int, char**) /usr/local/google/home/liamjm/git/upx/src/work.cpp:271
-    #6 0x55e67070f328 in real_main(int, char**) /usr/local/google/home/liamjm/git/upx/src/main.cpp:1541
-    #7 0x55e670716bae in main /usr/local/google/home/liamjm/git/upx/src/main_entrypoint.cpp:45
+    #1 0x55e6709a5f0b in PackMachBase<N_Mach::MachClass_64<N_BELE_CTP::LEPolicy> >::unpack(OutputFile*) /git/upx/src/p_mach.cpp:1421
+    #2 0x55e670b55dc9 in Packer::doUnpack(OutputFile*) /git/upx/src/packer.cpp:107
+    #3 0x55e670ba860d in PackMaster::unpack(OutputFile*) /git/upx/src/packmast.cpp:269
+    #4 0x55e670c81d73 in do_one_file(char const*, char*) /git/upx/src/work.cpp:160
+    #5 0x55e670c83699 in do_files(int, int, char**) /git/upx/src/work.cpp:271
+    #6 0x55e67070f328 in real_main(int, char**) /git/upx/src/main.cpp:1541
+    #7 0x55e670716bae in main /git/upx/src/main_entrypoint.cpp:45
     #8 0x7fdf81a44cc9 in __libc_start_main ../csu/libc-start.c:308
 
 SUMMARY: AddressSanitizer: heap-buffer-overflow (/lib/x86_64-linux-gnu/libasan.so.6+0x39982) in __interceptor_memcpy
