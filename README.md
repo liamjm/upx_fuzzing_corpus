@@ -202,7 +202,8 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
 
 ## testcase-5924189438607360
 
-``upx.out -v -d /tmp/testcase-5924189438607360
+```
+upx.out -v -d /tmp/testcase-5924189438607360
                        Ultimate Packer for eXecutables
                           Copyright (C) 1996 - 2020
 UPX git-ae607f+ Markus Oberhumer, Laszlo Molnar & John Reiser   Jan 24th 2020
@@ -230,5 +231,4 @@ Direct leak of 1 byte(s) in 1 object(s) allocated from:
     #10 0x7f7bcdd5acc9 in __libc_start_main ../csu/libc-start.c:308
 
 SUMMARY: AddressSanitizer: 1 byte(s) leaked in 1 allocation(s).
-`
 ```
