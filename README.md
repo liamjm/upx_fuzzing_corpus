@@ -199,3 +199,36 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
 ==2711255==ABORTING
 
 ```
+
+## testcase-5924189438607360
+
+``upx.out -v -d /tmp/testcase-5924189438607360
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2020
+UPX git-ae607f+ Markus Oberhumer, Laszlo Molnar & John Reiser   Jan 24th 2020
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+upx.out: /tmp/testcase-5924189438607360: CantUnpackException: corrupted resources
+
+Unpacked 1 file: 0 ok, 1 error.
+
+=================================================================
+==1266283==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1 byte(s) in 1 object(s) allocated from:
+    #0 0x7f7bceb127a7 in operator new[](unsigned long) (/lib/x86_64-linux-gnu/libasan.so.6+0xab7a7)
+    #1 0x55bcf568baf5 in PeFile::Resource::build() /git/upx/src/pefile.cpp:1734
+    #2 0x55bcf56a3829 in PeFile::rebuildResources(unsigned char*&, unsigned int) /git/upx/src/pefile.cpp:2760
+    #3 0x55bcf56d2a9a in void PeFile::unpack0<PeFile32::pe_header_t, LE32, unsigned int>(OutputFile*, PeFile32::pe_header_t const&, PeFile32::pe_header_t&, unsigned int, bool) /git/upx/src/pefile.cpp:2960
+    #4 0x55bcf56ab998 in PeFile32::unpack(OutputFile*) /git/upx/src/pefile.cpp:3120
+    #5 0x55bcf5614dd5 in Packer::doUnpack(OutputFile*) /git/upx/src/packer.cpp:107
+    #6 0x55bcf5667619 in PackMaster::unpack(OutputFile*) /git/upx/src/packmast.cpp:269
+    #7 0x55bcf5740d7f in do_one_file(char const*, char*) /git/upx/src/work.cpp:160
+    #8 0x55bcf57426a5 in do_files(int, int, char**) /git/upx/src/work.cpp:271
+    #9 0x55bcf51c9446 in main /git/upx/src/main.cpp:1538
+    #10 0x7f7bcdd5acc9 in __libc_start_main ../csu/libc-start.c:308
+
+SUMMARY: AddressSanitizer: 1 byte(s) leaked in 1 allocation(s).
+`
+```
